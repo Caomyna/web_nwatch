@@ -60,7 +60,7 @@
                 <textarea value="<?php echo $product_edit['descript'];?>"name="descript" class="form-control" id="" cols="30" rows="10"></textarea>
             </div>
 
-            <button name ="save" type="submit" class="btn btn-dark">Lưu</button>
+            <button name ="save" type="submit" class="btn btn-success">Cập nhật</button>
         </form>
     </div>
 </div>
@@ -73,8 +73,14 @@
         $title = $_POST['name_product'];
         $price = $_POST['price'];
         $discount = $_POST['discount'];
-        // $img_main = $_FILES['img_main'];
-        $images = $_FILES['images'];
+        // Điều kiện kiểm tra định dạng ảnh, nếu không phải ảnh không cho upload
+        if ($_FILES['images']['type'] == "image/jpeg" || $_FILES['images']['type'] == "image/png" || $_FILES['images']['type'] == "image/gif") {
+            $path = "image/"; // Thư mục images để lưu ảnh
+            $tmp_name = $_FILES['images']['tmp_name'];
+            $name = $_FILES['images']['name'];
+            // Upload ảnh vào thư mục images
+            $images = $path . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
+        }
         $descript = $_POST['descript'];
         $updated_at = date('Y-m-d H:s:i');
         $query = "UPDATE product SET category_id ='$id_category', title = '$title', price = '$price', 
@@ -82,5 +88,6 @@
         updated_at = '$updated_at' WHERE id_product = $id_product;";
         $productEdit = execute($query);
         echo '<script>alert("Cập nhập thành công!")</script>';
+        echo "<script>window.location.href='index.php?page=product_list.php'</script>";
     }
 ?>

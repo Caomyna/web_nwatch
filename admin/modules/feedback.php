@@ -23,6 +23,14 @@
             </thead>
             <tbody>
                 <?php
+                     if(isset($_GET["id_feedback"]))
+                     {
+                         $id_feedback = $_GET['id_feedback'];
+                         $sql = "DELETE FROM feedback WHERE id_feedback=$id_feedback";
+                         $result = execute($sql);
+                         echo '<script>alert("Đã xóa thành công!")</script>';
+                         echo "<script>window.location.href='index.php?page=feedback.php'</script>";
+                     }
                     // Lấy danh sách danh mục sản phẩm từ database
                     $sql = 'SELECT feedback.id_feedback, users.fullname, users.email, users.phone_number, feedback.note, 
                     users.id_user FROM feedback LEFT OUTER JOIN users ON feedback.user_id = users.id_user';
@@ -48,5 +56,6 @@
         </table>
     </div>
 </div>
+
 
 

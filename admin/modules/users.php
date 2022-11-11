@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>STT</th>
+                    <th>ID_User</th>
                     <th>Họ Tên </th>
                     <th>Email</th>
                     <th>Địa chỉ</th>
@@ -23,8 +24,16 @@
             </thead>
             <tbody>
                 <?php
+                    if(isset($_GET["id_user"]))
+                    {
+                        $id_user = $_GET['id_user'];
+                        $sql = "DELETE FROM users WHERE id_user=$id_user";
+                        $result = execute($sql);
+                        echo '<script>alert("Đã xóa thành công!")</script>';
+                        echo "<script>window.location.href='index.php?page=feedback.php'</script>";
+                    }
                     // Lấy danh sách danh mục sản phẩm từ database
-                    $sql = 'SELECT users.fullname, users.email, users.address, users.password, users.role FROM users';
+                    $sql = 'SELECT users.id_user, users.fullname, users.email, users.address, users.password, users.role FROM users';
                     $users = executeResult($sql);
                     $index = 1;
                     foreach($users as $item) : 
@@ -32,6 +41,7 @@
             
                 <tr>
                     <td><?php echo $index++; ?></td>
+                    <td><?php echo $item['id_user']; ?></td>
                     <td><?php echo $item['fullname']; ?></td>
                     <td><?php echo $item['email']; ?></td>
                     <td><?php echo $item['address']; ?></td>
@@ -47,7 +57,7 @@
                 
                     </td>
                     <td>
-                        <a href="" class="btn btn-danger">Xóa</a>
+                        <a href="index.php?page=users.php&id_user=<?php echo $item['id_user'];?>" class="btn btn-danger">Xóa</a>
                     </td>
                 </tr>
                         

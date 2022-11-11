@@ -27,6 +27,14 @@
             </thead>
             <tbody>
                 <?php
+                    if(isset($_GET["id_product"]))
+                    {
+                        $id_product = $_GET['id_product'];
+                        $sql = "DELETE FROM product WHERE id_product = $id_product;";
+                        $result = execute($sql);
+                        echo '<script>alert("Đã xóa thành công!")</script>';
+                        echo "<script>window.location.href='index.php?page=product_list.php'</script>";
+                    }
                     // Lấy danh sách danh mục sản phẩm từ database
                     $sql = 'SELECT product.id_product, product.images, product.title, product.price, product.updated_at, 
                     category.name_category FROM product LEFT OUTER JOIN category ON product.category_id = category.id_category';
@@ -47,7 +55,7 @@
                         <a href="index.php?page=product_edit.php&id_product=<?php echo $item['id_product'];?>" class="btn btn-warning">Sửa</a>
                     </td>
                     <td>
-                        <a href="index.php?page=product_delete.php&id_product=<?php echo $item['id_product'];?>" class="btn btn-danger">Xóa</a>
+                        <a href="index.php?page=product_list.php&id_product=<?php echo $item['id_product'];?>" class="btn btn-danger">Xóa</a>
                     </td>
                 </tr>
                         

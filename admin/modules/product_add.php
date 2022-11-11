@@ -21,8 +21,8 @@
         $created_at = $updated_at = date('Y-m-d H:s:i');
         $sql = "INSERT INTO product (category_id, title, price, discount, images, descript, created_at, updated_at) VALUES ('$id_category','$title','$price','$discount','$images','$descript','$created_at','$updated_at')";
         $productAdd = execute($sql);
-        // header('Location: product_list.php');
         echo '<script>alert("Thêm sản phẩm thành công!")</script>';
+        echo "<script>window.location.href='index.php?page=product_list.php'</script>";
     }
 ?>
 
@@ -65,10 +65,6 @@
                 <label class="form-label">Ảnh sản phẩm</label>
                 <input name ="images" type="file" class="form-control" required>
             </div>
-            <!-- <div class="mb-3">
-                <label class="form-label">Ảnh mô tả</label>
-                <input name ="thumbnail" multiple type="file" class="form-control">
-            </div> -->
             <div class="mb-3">
                 <label class="form-label">Mô tả sản phẩm</label>
                 <textarea name="descript" class="form-control" id="" cols="30" rows="10"></textarea>
