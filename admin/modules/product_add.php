@@ -1,5 +1,4 @@
 <?php
-    // session_start();
     include "db/database.php";
 
     if ( $_SERVER['REQUEST_METHOD']==='POST') {
@@ -7,20 +6,31 @@
         $title = $_POST['product_name'];
         $price = $_POST['price'];
         $discount = $_POST['discount'];
-    
-        // Điều kiện kiểm tra định dạng ảnh, nếu không phải ảnh không cho upload
-        if ($_FILES['images']['type'] == "image/jpeg" || $_FILES['images']['type'] == "image/png" || $_FILES['images']['type'] == "image/gif") {
-            $path = "image/"; // Thư mục images để lưu ảnh
-            $tmp_name = $_FILES['images']['tmp_name'];
-            $name = $_FILES['images']['name'];
-            // Upload ảnh vào thư mục images
-            $images = $path . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
-        }
-        // $images =$_POST['images'];
         $descript = $_POST['descript'];
         $created_at = $updated_at = date('Y-m-d H:s:i');
+        // Điều kiện kiểm tra định dạng ảnh, nếu không phải ảnh không cho upload
+        if ($_FILES['images']['type'] == "image/jpeg" || $_FILES['images']['type'] == "image/png" || $_FILES['images']['type'] == "image/gif") {
+            $tmp_name = $_FILES['images']['tmp_name'];
+            $images = $_FILES['images']['name'];
+
+        }
+        if(isset($_FILES['multiImg'])){
+            $files = $_FILES['multiImg'];
+            $file_names = $files['name'];
+
+            foreach ($file_names as $key => $value) {
+                move_uploaded_file($files['tmp_name'][$key], 'image/'.$value);
+            }
+        }
+        $conn = mysqli_connect('localhost:3306', 'root', '', 'shop');
         $sql = "INSERT INTO product (category_id, title, price, discount, images, descript, created_at, updated_at) VALUES ('$id_category','$title','$price','$discount','$images','$descript','$created_at','$updated_at')";
-        $productAdd = execute($sql);
+        $productAdd = mysqli_query($conn,$sql);
+        $id_pro = mysqli_insert_id( $conn);
+        
+        foreach ($file_names  as $key => $value) {
+            $sql = "INSERT INTO `galery`(`product_id`, `images`) VALUES ('$id_pro','$value')";
+            mysqli_query($conn,$sql);
+        }
         echo '<script>alert("Thêm sản phẩm thành công!")</script>';
         echo "<script>window.location.href='index.php?page=product_list.php'</script>";
     }
@@ -64,6 +74,10 @@
             <div class="mb-3">
                 <label class="form-label">Ảnh sản phẩm</label>
                 <input name ="images" type="file" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ảnh mô tả</label>
+                <input name ="multiImg[]" type="file" class="form-control" multiple="multiple">
             </div>
             <div class="mb-3">
                 <label class="form-label">Mô tả sản phẩm</label>

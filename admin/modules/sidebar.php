@@ -67,7 +67,7 @@
 
                 <li class="nav-item active">
                     <a class="nav-link">
-                        <!-- <i class="nav-icon fas fa-bars"></i> -->
+                        <i class="nav-icon fas fa-th"></i>
                         <p>
                             Sản phẩm 
                             <i class="right fas fa-angle-left"></i>
@@ -91,6 +91,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="index.php?page=users.php" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i> 
                         <p>
                             Quản lý người dùng 
                         </p>
@@ -98,13 +99,15 @@
                 </li>
                 <li class="nav-item">
                     <a href="index.php?page=order.php" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Quản lý đơn hàng
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="index.php?page=galery.php" class="nav-link">
+                        <i class="nav-icon far fa-image"></i>
                         <p>
                             Quản lý hình ảnh
                         </p>
@@ -112,6 +115,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="index.php?page=feedback.php" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Quản lý phản hồi 
                         </p>
@@ -119,6 +123,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="logout.php" class="nav-link">
+                        <i class="nav-icon fas fa-signout"></i> 
                         <p>
                             Đăng xuất 
                         </p>

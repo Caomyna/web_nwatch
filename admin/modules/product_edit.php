@@ -1,14 +1,15 @@
 <?php
     // session_start();
     include "db/database.php";
-?>
-<?php
     if(!isset($_GET['id_product']) || $_GET['id_product']==NULL){
         echo '<script>alert("Giá trị ID không tồn tại. Vui lòng kiểm tra lại.!")</script>';
     }else{
         $id_product = $_GET['id_product'];
-        $sql = "SELECT * FROM product WHERE id_product = '$id_product';";
+        $conn = mysqli_connect('localhost:3306', 'root', '', 'shop');
+        $sql = "SELECT * FROM product WHERE id_product = $id_product";
         $product_edit = executeSingleResult($sql);
+        $query = "SELECT * FROM galery WHERE product_id = $id_product";
+        $img_pro = mysqli_query($conn,$query);
     }
 ?>
 
@@ -31,7 +32,7 @@
                         foreach($categoryList as $item) : 
                     ?>
                 
-                    <option value="<?php echo $item['id_category']; ?>"><?php echo $item['name_category']; ?></option>
+                    <option value="<?php echo $item['id_category']; ?>" <?php echo(($item['id_category']==$product_edit['category_id'])?'selected':'')?>><?php echo $item['name_category']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -47,13 +48,23 @@
                 <label class="form-label">Giá khuyến mãi</label>
                 <input value="<?php echo $product_edit['discount'];?>" name ="discount" type="text" class="form-control" required>
             </div>
-            <!-- <div class="mb-3">
-                <label class="form-label">Ảnh sản phẩm</label>
-                <input name ="img_main" type="file" class="form-control" required>
-            </div> -->
             <div class="mb-3">
                 <label class="form-label">Ảnh sản phẩm</label>
-                <input name ="images" multiple type="file" class="form-control">
+                <input name ="images" type="file" class="form-control">
+                <img src="../image/<?php echo $product_edit['images'];?>" alt="" style="max-width: 300px;">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Ảnh mô tả</label>
+                <input name ="multiImg[]" type="file" class="form-control" multiple="multiple">
+                <div class="row">
+                    <?php foreach ($img_pro as $item) :?>
+                    <div class="col-md-3">
+                        <a href="">
+                            <img src="../image/<?php echo $item['images'];?>" alt="" style="max-height:200px;">
+                        </a>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Mô tả sản phẩm</label>
@@ -73,16 +84,40 @@
         $title = $_POST['name_product'];
         $price = $_POST['price'];
         $discount = $_POST['discount'];
-        // Điều kiện kiểm tra định dạng ảnh, nếu không phải ảnh không cho upload
-        if ($_FILES['images']['type'] == "image/jpeg" || $_FILES['images']['type'] == "image/png" || $_FILES['images']['type'] == "image/gif") {
-            $path = "image/"; // Thư mục images để lưu ảnh
-            $tmp_name = $_FILES['images']['tmp_name'];
-            $name = $_FILES['images']['name'];
-            // Upload ảnh vào thư mục images
-            $images = $path . $name; // Đường dẫn ảnh lưu vào cơ sở dữ liệu
-        }
         $descript = $_POST['descript'];
         $updated_at = date('Y-m-d H:s:i');
+
+        if (isset($_FILES['images'])) {
+            $tmp_name = $_FILES['images']['tmp_name'];
+            $images = $_FILES['images']['name'];
+            if (empty($images)) {
+                $images = $product_edit['images'];
+            }else{
+                if ($_FILES['images']['type'] == "image/jpeg" || $_FILES['images']['type'] == "image/png" || $_FILES['images']['type'] == "image/gif") {
+                    foreach ($file_names as $key => $value) {
+                        move_uploaded_file($files['tmp_name'][$key], 'image/'.$images);
+                    }
+                }else{
+                    echo"Không đúng định dạng";
+                    $images="";
+                }
+            }
+        }
+        
+        if (isset($_FILES['multiImg'])) {
+            $files = $_FILES['multiImg'];
+            $file_names = $files['name'];
+            if (!empty($file_names[0])) {
+                $id_product = $_GET['id_product'];
+                $sql = "DELETE FROM galery WHERE product_id = $id_product;";
+                $result = execute($sql);
+              
+                foreach ($file_names  as $key => $value) {
+                    $sql = "INSERT INTO `galery`(`product_id`, `images`) VALUES ('$id_product','$value')";
+                    mysqli_query($conn,$sql);
+                }
+            }
+        }
         $query = "UPDATE product SET category_id ='$id_category', title = '$title', price = '$price', 
         discount ='$discount', images = '$images' , descript ='$descript',
         updated_at = '$updated_at' WHERE id_product = $id_product;";

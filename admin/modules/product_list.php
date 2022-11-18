@@ -46,7 +46,7 @@
                 <tr>
                     <td><?php echo $index++; ?></td>
                     <td><?php echo $item['id_product']; ?></td>
-                    <td><img style="width:100px;" src="../<?php echo $item['images'];?>"/></td>
+                    <td><img style="width:100px;" src="../image/<?php echo $item['images'];?>"/></td>
                     <td><?php echo $item['title']; ?></td>
                     <td><?php echo $item['price']; ?></td>
                     <td><?php echo $item['name_category']; ?></td>

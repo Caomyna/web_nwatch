@@ -14,11 +14,10 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th  width="20px">Mã đơn hàng</th>
-                    <th>Tên khách hàng</th>
-                    <th>Email</th>
+                    <th  width="20px">Mã đơn</th>
+                    <th>Tên KH</th>
                     <th>SĐT</th>
-                    <th>Ngày đặt hàng</th>
+                    <th>Ngày đặt</th>
                     <th>Nơi giao</th>
                     <th>Tổng tiền</th>
                     <th>Trạng thái</th>
@@ -27,8 +26,16 @@
             </thead>
             <tbody>
                 <?php
+                    if(isset($_GET["id_orders"]))
+                    {
+                        $id_orders = $_GET['id_orders'];
+                        $sql = "DELETE FROM orders WHERE id_orders = $id_orders;";
+                        $result = execute($sql);
+                        echo '<script>alert("Đã xóa thành công!")</script>';
+                        echo "<script>window.location.href='index.php?page=order.php'</script>";
+                    }
                     // Lấy danh sách danh mục sản phẩm từ database
-                    $sql = 'SELECT orders.id_orders, orders.fullname, orders.email, orders.phone_number, orders.address, 
+                    $sql = 'SELECT orders.id_orders, orders.fullname, orders.phone_number, orders.address, 
                     orders.order_date, orders.status, orders.total_money FROM orders';
                     $orders = executeResult($sql);
                     $index = 1;
@@ -39,7 +46,6 @@
                     <td><?php echo $index++; ?></td>
                     <td><?php echo $item['id_orders']; ?></td>
                     <td><?php echo $item['fullname']; ?></td>
-                    <td><?php echo $item['email']; ?></td>
                     <td><?php echo $item['phone_number']; ?></td>
                     <td><?php echo $item['order_date']; ?></td>
                     <td><?php echo $item['address']; ?></td>
@@ -47,7 +53,11 @@
                     <td>
                         <?php if ($item['status'] == 0) : ?>
                             <span class="badge badge-danger">Chưa xử lý</span>
-                        <?php else : ?>
+                        <?php elseif ($item['status'] == 1) : ?>
+                            <span class="badge badge-warning">Đã xử lý</span>
+                        <?php elseif ($item['status'] == 2) : ?>
+                            <span class="badge badge-success">Đang giao hàng</span>
+                        <?php elseif ($item['status'] == 3) : ?>
                             <span class="badge badge-success">Đã giao hàng</span>
                         <?php endif; ?>
 
@@ -55,21 +65,32 @@
                     <td>
                         <!-- Đơn hàng nào chưa thanh toán thì được phép phép Xóa, Sửa -->
                         <?php if ($item['status'] == 0) : ?>
-                            <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `dh_ma` -->
-                            <a href="orders_edit.php?id_orders=<?= $item['id_orders'] ?>" class="btn btn-warning">
-                                Sửa
+                            <a href="index.php?page=order_detail.php&id_orders=<?php echo $item['id_orders'];?>" class="btn btn-warning">
+                                Xem
                             </a>
-                            <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
-                            <button type="button" class="btn btn-danger btnDelete" data-id_orders="<?= $item['id_orders'] ?>">
+                            <a href="index.php?page=order.php&id_orders=<?php echo $item['id_orders'];?>" class="btn btn-danger">
                                 Xóa
-                            </button>
-                        <?php else : ?>
-                            <!-- Đơn hàng nào đã thanh toán rồi thì không cho phép Xóa, Sửa (không hiển thị 2 nút này ra giao diện) 
-                            - Cho phép IN ấn ra giấy
-                            -->
-                            <!-- Nút in, bấm vào sẽ hiển thị mẫu in thông tin dựa vào khóa chính `dh_ma` -->
-                            <a href="orders_print.php?id_orders=<?= $item['id_orders'] ?>" class="btn btn-success">
+                            </a>
+                        <?php elseif($item['status'] == 1) : ?>
+                            <a href="index.php?page=order_detail.php&id_orders=<?php echo $item['id_orders'];?>" class="btn btn-warning">
+                                Xem
+                            </a>
+                            <a href="index.php?page=order.php&id_orders=<?php echo $item['id_orders'];?>" class="btn btn-danger">
+                                Xóa
+                            </a>
+                        <?php elseif($item['status'] == 2) : ?>
+                            <a href="index.php?page=order_detail.php&id_orders=<?php echo $item['id_orders'];?>" class="btn btn-warning">
+                                Xem
+                            </a>
+                            <a href="index.php?page=order.php&id_orders=<?php echo $item['id_orders'];?>" class="btn btn-danger">
+                                Xóa
+                            </a>
+                        <?php elseif($item['status'] == 3) : ?>
+                            <a href="index.php?page=order_detail.php&id_orders=<?php echo $item['id_orders'];?>" class="btn btn-success">
                                 In
+                            </a>
+                            <a href="index.php?page=order.php&id_orders=<?php echo $item['id_orders'];?>" class="btn btn-danger">
+                                Xóa
                             </a>
                         <?php endif; ?>
                     </td>
