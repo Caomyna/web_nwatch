@@ -14,7 +14,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="template/images/signin-image.jpg" alt="sing up image"></figure>
+                        <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
                     </div>
 
                     <div class="signin-form">
