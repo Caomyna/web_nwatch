@@ -10,9 +10,10 @@
 <div class="wrapper">
 
     <!-- Navbar -->
-    <?php include('modules/nav.php');?>
-    <!-- /.navbar -->
-    <?php include('modules/sidebar.php');?>
+    <?php 
+        include('modules/nav.php');
+        include('modules/sidebar.php');
+    ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">

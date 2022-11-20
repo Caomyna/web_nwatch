@@ -32,7 +32,7 @@
                          echo "<script>window.location.href='index.php?page=feedback.php'</script>";
                      }
                     // Lấy danh sách danh mục sản phẩm từ database
-                    $sql = 'SELECT feedback.id_feedback, users.fullname, users.email, users.phone_number, feedback.note, 
+                    $sql = 'SELECT feedback.id_feedback, users.fullname, users.email, users.phone_number, feedback.message, 
                     users.id_user FROM feedback LEFT OUTER JOIN users ON feedback.user_id = users.id_user';
                     $feedback = executeResult($sql);
                     $index = 1;
@@ -45,7 +45,7 @@
                     <td><?php echo $item['fullname']; ?></td>
                     <td><?php echo $item['email']; ?></td>
                     <td><?php echo $item['phone_number']; ?></td>
-                    <td><?php echo $item['note']; ?></td>
+                    <td><?php echo $item['message']; ?></td>
                     <td>
                         <a href="index.php?page=feedback.php&id_feedback=<?php echo $item['id_feedback'];?>" class="btn btn-danger">Xóa</a>
                     </td>

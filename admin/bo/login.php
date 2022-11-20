@@ -11,7 +11,7 @@
         $user = executeSingleResult($sql);
 
         if ($user == 0){
-            header('location: login.php');
+            header('location: ../login.php');
             echo '<script>alert("Sai email hoặc mật khẩu!")</script>';
         }
         else
@@ -27,7 +27,7 @@
             }
             else{
                 $_SESSION['role'] = 'user';
-                header('location: login.php');
+                header('location: ../login.php');
             }
         }
     }

@@ -16,8 +16,8 @@
                     <th>ID_User</th>
                     <th>Họ Tên </th>
                     <th>Email</th>
-                    <th>Địa chỉ</th>
                     <th>Mật khẩu</th>
+                    <th>Số điện thoại</th>
                     <th>Vai trò</th>
                     <th></th>
                 </tr>
@@ -33,7 +33,7 @@
                         echo "<script>window.location.href='index.php?page=feedback.php'</script>";
                     }
                     // Lấy danh sách danh mục sản phẩm từ database
-                    $sql = 'SELECT users.id_user, users.fullname, users.email, users.address, users.password, users.role FROM users';
+                    $sql = 'SELECT users.id_user, users.fullname, users.email, users.password, users.phone_number, users.role FROM users';
                     $users = executeResult($sql);
                     $index = 1;
                     foreach($users as $item) : 
@@ -44,8 +44,8 @@
                     <td><?php echo $item['id_user']; ?></td>
                     <td><?php echo $item['fullname']; ?></td>
                     <td><?php echo $item['email']; ?></td>
-                    <td><?php echo $item['address']; ?></td>
                     <td><?php echo $item['password']; ?></td>
+                    <td><?php echo $item['phone_number']; ?></td>
                     <td>
                         <?php 
                             if ($item['role']==1) {
