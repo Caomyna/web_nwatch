@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <body>
-        <!--NAVIGATION-->
         <?php include('nav.php');?>
 
         <section id="home">
@@ -52,199 +51,44 @@
             </div>
         </section>
 
-        <section id="featured" class="my-5 pb-5">
-            <div class="container text-center mt-5 py-5">
-                <h3>Our Featured</h3>
-                <hr class="mx-auto">
-                <p>Here you can check out our new products with fair price on rymo.</p>
-            </div>
-            <div class="row mx-auto container-fluid">
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+            <?php 
+                $sql1 = "SELECT * FROM category";
+                $ListCate= executeResult($sql1);
+                foreach ($ListCate as $key ) {
+                $id = $key['id_category'];
+            ?>
+            
+                <section id="<?php echo $key['id_category'];?>" class="my-5 pb-5">
+                    <div class="container text-center mt-5 py-5">
+                        <h2 class="form-title"><?php echo $key['name_category'];?></h2>
+                        <hr class="mx-auto">
+                        <p>Here you can check out our new products with fair price on rymo.</p>
                     </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    <div class="row mx-auto container-fluid">
+                        <?php 
+                            $sql2 = "SELECT * FROM product WHERE category_id =$id";
+                            $ListProduct= executeResult($sql2);
+                            foreach ($ListProduct as $item ) {
+                        ?>
+                        
+                        <div class="product text-center col-lg-3 col-md-4 col-12">
+                            <img class="img-fluid mb-33" src="images/<?php echo $item['images']?>" alt="">
+                            <div class="star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h5 class="p-name"><?php echo $item['title']?></h5>
+                            <h4 class="p-price"><?php echo number_format($item['discount'])?><sup>đ</sup></h4>
+                            <h5 class="p-price"><del><?php echo number_format($item['price'])?><sup>đ</sup></del></h5>
+                            <button class="buy-btn">Show More</button>
+                        </div>
+                        <?php }?>    
                     </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="banner" class="my-5 py-5">
-            <div class="container">
-                <h4>Mid season's sale</h4>
-                <h1>Autumn Collection<br>Up to 20% Off</h1>
-                <button class="text-uppercase">Shop now</button>
-            </div>
-        </section>
-
-        <section id="clothes" class="my-5">
-            <div class="container text-center mt-5 py-5">
-                <h3>Our Featured</h3>
-                <hr class="mx-auto">
-                <p>Here you can check out our new products with fair price on rymo.</p>
-            </div>
-            <div class="row mx-auto container-fluid">
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="watch" class="my-5">
-            <div class="container text-center mt-5 py-5">
-                <h3>Our Featured</h3>
-                <hr class="mx-auto">
-                <p>Here you can check out our new products with fair price on rymo.</p>
-            </div>
-            <div class="row mx-auto container-fluid">
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-            </div>
-        </section>
+                </section>
+            <?php }?>
 
         <?php include('footer.php');?>
     </body>

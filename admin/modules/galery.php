@@ -3,7 +3,7 @@
     //phân trang
     $gallery = mysqli_query($conn,"SELECT * FROM galery"); 
     $total = mysqli_num_rows($gallery);  //Tính tổng số bảng ghi
-    $limit = 3; //Thiết lập số bảng ghi trên 1 trang
+    $limit = 20; //Thiết lập số bảng ghi trên 1 trang
     $page = ceil($total/$limit);//Tính số trang
     //Lấy trang hiện tại
     $cr_page = (isset($_GET['_page'])?$_GET['_page'] : 1);
@@ -26,7 +26,7 @@
                     <th>Ảnh mô tả</th>
                     <th>Tên sản phẩm</th>
                     <th width="15px"></th>
-                    <th width="15px"></th>
+                    <!-- <th width="15px"></th> -->
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
             
                 <tr>
                     <td><?php echo $index++; ?></td>
-                    <td><img style="width:150px; max-height:150px;" src="../image/<?php echo $item['images'];?>"/></td>
+                    <td><img style="width:150px; max-height:150px;" src="../images/<?php echo $item['images'];?>"/></td>
                     <td><?php echo $item['title']; ?></td>
                     
                     <td>

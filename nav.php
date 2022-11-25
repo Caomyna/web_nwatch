@@ -16,7 +16,7 @@
                     <a class="nav-link active" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="">Sản phẩm</a>
+                    <a class="nav-link" href="shop.php">Sản phẩm</a>
                     <ul class="dropdown-menu">
                         <?php
                             $sql = 'SELECT name_category FROM category'; 
