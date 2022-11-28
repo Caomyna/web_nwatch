@@ -19,12 +19,12 @@
                     <a class="nav-link" href="shop.php">Sản phẩm</a>
                     <ul class="dropdown-menu">
                         <?php
-                            $sql = 'SELECT name_category FROM category'; 
+                            $sql = 'SELECT * FROM category'; 
                             $categoryList = executeResult($sql);
                             // $index = 1;
                             foreach($categoryList as $item) : 
                         ?>
-                        <li><a class="dropdown-item" href=""><?php echo $item['name_category'];?></a></li>
+                        <li><a class="dropdown-item" href="shop.php#<?php echo $item['id_category'];?>"><?php echo $item['name_category'];?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </li>

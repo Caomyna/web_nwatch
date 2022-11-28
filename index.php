@@ -58,36 +58,37 @@
                 $id = $key['id_category'];
             ?>
             
-                <section id="<?php echo $key['id_category'];?>" class="my-5 pb-5">
-                    <div class="container text-center mt-5 py-5">
-                        <h2 class="form-title"><?php echo $key['name_category'];?></h2>
-                        <hr class="mx-auto">
-                        <p>Here you can check out our new products with fair price on rymo.</p>
-                    </div>
-                    <div class="row mx-auto container-fluid">
-                        <?php 
-                            $sql2 = "SELECT * FROM product WHERE category_id =$id";
-                            $ListProduct= executeResult($sql2);
-                            foreach ($ListProduct as $item ) {
-                        ?>
-                        
-                        <div class="product text-center col-lg-3 col-md-4 col-12">
-                            <img class="img-fluid mb-33" src="images/<?php echo $item['images']?>" alt="">
-                            <div class="star">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h5 class="p-name"><?php echo $item['title']?></h5>
-                            <h4 class="p-price"><?php echo number_format($item['discount'])?><sup>đ</sup></h4>
-                            <h5 class="p-price"><del><?php echo number_format($item['price'])?><sup>đ</sup></del></h5>
-                            <button class="buy-btn">Show More</button>
+            <section id="<?php echo $key['id_category'];?>" class="my-5 pb-5">
+                <div class="container text-center mt-5 py-5">
+                    <h2 class="form-title"><?php echo $key['name_category'];?></h2>
+                    <hr class="mx-auto">
+                    <p>Here you can check out our new products with fair price on rymo.</p>
+                </div>
+                <div class="row mx-auto container-fluid">
+                    <?php 
+                        $sql2 = "SELECT * FROM product WHERE category_id =$id";
+                        $ListProduct= executeResult($sql2);
+                        foreach ($ListProduct as $item ) {
+                    ?>
+                    
+                    <div class="product text-center col-lg-3 col-md-4 col-12">
+                        <img class="img-fluid mb-33" src="images/<?php echo $item['images']?>" alt="">
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <?php }?>    
+                        <h5 class="p-name"><?php echo $item['title']?></h5>
+                        <h4 class="p-price"><?php echo number_format($item['discount'])?><sup>đ</sup></h4>
+                        <h5 class="p-price"><del><?php echo number_format($item['price'])?><sup>đ</sup></del></h5>
+                        <button class="buy-btn">Show More</button>
                     </div>
-                </section>
+                    <?php }?>    
+                </div>
+            </section>
+            
             <?php }?>
 
         <?php include('footer.php');?>

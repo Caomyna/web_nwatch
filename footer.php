@@ -1,5 +1,50 @@
+<head>
+    <style>
+        .footer{
+            background-color: back;
+            background-size: cover;
+            background-position: center;
+            padding: 7px 16px;
+            padding-bottom: 20px;
+        }
+        
+        .footer .box-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(13.5em, 0fr));
+            gap: 0.8rem;
+        }
+        
+        .footer .box-container .box h3{
+            color:var(--main-color);
+            font-size: 1.5rem;
+            padding: 1rem;
+        }
+        
+        .footer .box-container .box a{
+            color:var(--white);
+            font-size: 0.9rem;
+            padding-bottom: 1rem;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .footer .box-container .box a i{
+            color:var(--main-color);
+            padding-right: 0.8rem;
+            transition: .2s linear;
+        }
+        
+        .footer .box-container .box a:hover i{
+            padding-right: 1rem;
+        }
+        .footer p{
+            color: #999;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
 <footer class="footer">
-    <div class="row container mx-auto pt-5">
+    <!-- <div class="row container mx-auto pt-5">
         <div class="footer-one col-lg-3 col-md-6 col-12">
             <img src="images/Simple.png" alt="">
             <p class="pt-3">LEARN HOW TO MAKE RESPONSIVE ECOMMERCE WEBSITE USING HTML CSS AND JAVASCRIPT. IN THIS.</p>                   
@@ -41,23 +86,49 @@
                 <img class="img-fluid w-25 h-100 m-2" src="" alt="">
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="copyright mt-5">
-        <div class="row container mx-auto">
-            <div class="col-lg-3 col-md-6 col-12 mb-4">
-                <img src="" alt="">  
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Quick links</h3>
+                <a href="home.php"> <i class="fas fa-angle-right"></i> Trang chủ</a>
+                <a href="about.php"> <i class="fas fa-angle-right"></i> Giới thiệu</a>
+                <a href="package.php"> <i class="fas fa-angle-right"></i>Sản phẩm</a>
+                <a href="book.php"> <i class="fas fa-angle-right"></i> Liên hệ</a>
             </div>
-            <!-- <div class="col-lg-4 col-md-6 col-12 text-nowrap mb-2">
-                <p>rymo eCommerce &copy; 2022. All Rights Reserved </p>
-            </div> -->
-            <div class="col-lg-4 col-md-6 col-12">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+            <div class="box">
+                <h3>Extra links</h3>
+                <a href="home.php"> <i class="fas fa-angle-right"></i> Điều khoản sử dụng</a>
+                <a href="about.php"> <i class="fas fa-angle-right"></i> Chính sách bảo hành</a>
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+                <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+                <a href="#"> <i class="fas fa-envelope"></i> nwatch@gmail.com </a>
+                <a href="#"> <i class="fas fa-map"></i> Đà Nẵng, Việt Nam </a>
+            </div>
+
+            <div class="box">
+                <h3>Follow us</h3>
+                <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+                <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+                <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+                <a href="#"> <i class="fab fa-linkedin"></i> linkedin </a>
+            </div>
+
+            <div class="box">
+                <img src="images/Simple.png" alt="">
+                <p class="pt-3">LEARN HOW TO MAKE RESPONSIVE ECOMMERCE WEBSITE USING HTML CSS AND JAVASCRIPT. IN THIS.</p>                   
             </div>
         </div>
-    </div>
+
+    </section>
 
     <!-- <div class="credit"> created by <span>MyNa & NgocNhu</span></div> -->
 </footer>

@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="template/fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="template/css/style.css">
+    <!-- <link rel="stylesheet" href="template/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="template/css/style.css"> -->
+    <link rel="stylesheet" href="https://colorlib.com/etc/regform/colorlib-regform-7/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
     <?php include('nav.php');?>
@@ -28,10 +30,7 @@
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="your_pass" placeholder="Password"/>
                             </div>
-                            <!-- <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div> -->
+
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                                 <a href="register.php" class="signup-image-link">Create an account</a>
@@ -46,8 +45,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <!-- JS -->
-    <script src="template/vendor/jquery.min.js"></script>
-    <script src="template/js/main.js"></script>
+    <script src="https://colorlib.com/etc/regform/colorlib-regform-7/vendor/jquery/jquery.min.js"></script>
+    <!-- <script src="template/vendor/jquery.min.js"></script> -->
 </body>
 </html>
 <?php 

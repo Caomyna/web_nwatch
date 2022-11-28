@@ -48,7 +48,7 @@
                     <td><?php echo $item['id_product']; ?></td>
                     <td><img style="width:100px;" src="../images/<?php echo $item['images'];?>"/></td>
                     <td><?php echo $item['title']; ?></td>
-                    <td><?php echo $item['price']; ?></td>
+                    <td><?php echo number_format($item['price'], 0, ",", ".")?></td>
                     <td><?php echo $item['name_category']; ?></td>
                     <td><?php echo $item['updated_at']; ?></td>
                     <td>

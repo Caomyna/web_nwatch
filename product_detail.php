@@ -17,64 +17,42 @@
     </head>
     <body>
         <!--NAVIGATION-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top">
-            <div class="container">
-                <img src="images/Simple.png" alt="">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><i id="bar" class="fas fa-bars"></i></span> <!--tao kieu cho ky hieu bar-->
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="shop.html">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blog.html">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fal fa-search"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cart.html"><i class="fal fa-shopping-bag"></i></a>
-                        </li>  
-                </div>
-            </div>
-        </nav>
+        <?php include("nav.php")?>
+        <?php 
+            if(isset($_GET["id_product"]))
+            {
+                $id_product = $_GET['id_product'];
+                $sql = "SELECT * FROM `product` WHERE `id_product` = '$id_product';";
+                $product = executeResult($sql);
+                $sql1 = "SELECT * FROM `galery` WHERE `product_id` = '$id_product';";
+                $galery = executeResult($sql1);
+            }
+        ?>
+
+        <?php
+
+        ?>
 
         <section class="container sproduct my-5 pt-5">
             <div class="row mt-5">
-                <div class="col-lg-5 col-md-12 col-12">
-                    <img class="img-fluid w-100 pb-1" src="images/Daniel_Wellington/Nam/DW00100132_1.jpg" id="MainImg" alt="">
-
+                <?php foreach($product as $key => $value): 
+                ?>
+                <div class="col-lg-5 col-md-12 col-12">                    
+                    <img class="img-fluid w-100 pb-1" src="images/<?php echo $value['images'];?>" id="MainImg" alt="">
                     <div class="small-img-group">
+                        <?php foreach($galery as $key1 => $value1): 
+                        ?>
                         <div class="small-img-col">
-                            <img src="images/Daniel_Wellington/Nam/DW00100132_1.jpg" width="100%" class="small-img" alt="">
+                            <img src="images/<?php echo $value1['images'];?>" width="100%" class="small-img" alt="">
                         </div>
-                        <div class="small-img-col">
-                            <img src="images/Daniel_Wellington/Nam/DW00100132_2.jpg" width="100%" class="small-img" alt="">
-                        </div>
-                        <div class="small-img-col">
-                            <img src="images/Daniel_Wellington/Nam/DW00100132_3.jpg" width="100%" class="small-img" alt="">
-                        </div>
-                        <div class="small-img-col">
-                            <img src="images/Daniel_Wellington/Nam/DW00100132_4.jpg" width="100%" class="small-img" alt="">
-                        </div>
+                        <?php endforeach?>
                     </div>
                 </div>
 
                 <div id="information" class="col-lg-7 col-md-12 col-12">
                     <h6>Home / Watch Men</h6>
-                    <h3 class="py-3">Đồng Hồ Daniel Wellington Nam DW00100132</h3>
-                    <h6>Mã: WDA00000104 (Mã quốc tế: DW00100132)</h6>
+                    <h3 class="py-3">Đồng Hồ Daniel Wellington Nam <?php echo $value['title']?></h3>
+                    <h6>Mã: WDA00000104 (Mã quốc tế: <?php echo $value['title']?>)</h6>
                     <hr>
                     <div class="product-brands">
                         <h4 class="title"><span>Thương Hiệu Độc Quyền Trên Thế Giới</span></h4>
@@ -82,12 +60,15 @@
                             <img width="268" height="125" src="images/Brand_DW.png" title="Daniel Wellington (DW)" alt="Daniel Wellington (DW)" class="brand-image">
                         </a>
                     </div>
-                    <h2 class="prices py-2"><i><small><del>5.900.000<sup>đ</sup></del></small></i>&rarr;4.720.000<sup>đ</sup><i><small style="color:red">(Giảm 15%)</small></i></h2>
+                    <h2 class="prices py-2"><i><small><del><?php echo number_format($value['price'])?><sup>đ</sup></del></small></i>&rarr;<?php echo number_format($value['discount'])?><sup>đ</sup><i><small style="color:red">(Giảm 15%)</small></i></h2>
                     <div class="numbers">
-                        <h3>Hãy chọn số lượng :   <input type="number" value="1"></h3>
+                        <form action="cart.php?action=add" method="post">
+                            <h3>Hãy chọn số lượng : <input type="number" value="1" name="num[<?php echo $id_product; ?>]" min=1></h3>
+                            <button class="buy-btn">Thêm vào giỏ hàng</button>
+                        </form>
                     </div>
-                    <button class="buy-btn">Thêm vào giỏ hàng</button>
                 </div>
+                <?php endforeach?>
             </div>
         </section>
 

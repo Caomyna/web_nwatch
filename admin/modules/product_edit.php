@@ -85,7 +85,7 @@
         $price = $_POST['price'];
         $discount = $_POST['discount'];
         $descript = $_POST['descript'];
-        $updated_at = date('Y-m-d H:s:i');
+        $updated_at = date('Y-m-d');
 
         if (isset($_FILES['images'])) {
             $tmp_name = $_FILES['images']['tmp_name'];

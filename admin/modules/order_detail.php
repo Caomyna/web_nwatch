@@ -2,11 +2,10 @@
     include "db/database.php";    
     if (isset($_GET['id_orders'])) {
         $id_orders = $_GET['id_orders'];
-        $sql = "SELECT orders.fullname, orders.phone_number, orders.address, orders.order_date, orders.status
-        FROM orders WHERE id_orders = $id_orders" ;
+        $sql = "SELECT * FROM orders WHERE id_orders = $id_orders" ;
         $orderList = executeResult($sql);
 
-        $query = "SELECT order_details.num, product.title, product.images, product.price
+        $query = "SELECT order_details.num, order_details.total_money, product.title, product.images, product.price
         FROM order_details JOIN product ON order_details.product_id = product.id_product WHERE order_details.order_id=$id_orders";
         $orderDetail = executeResult($query);
     }
@@ -64,7 +63,7 @@
                         </tr>
                     </table>               
                 </div>
-                <?php endforeach ;?>
+                <!-- -->
             </div>
         </div>
         <div class="row">
@@ -86,22 +85,29 @@
                     <tbody>
                         <?php
                             $index = 1;
-                            foreach($orderDetail as $item) : 
+                            foreach($orderDetail as $key) : 
                         ?>
                     
                         <tr>
                             <td><?php echo $index++; ?></td>
-                            <td><img style="width:100px; height:100px;" src="../image/<?php echo $item['images'];?>"/></td>
-                            <td><?php echo $item['title']; ?></td>
-                            <td><?php echo $item['num']; ?></td>
-                            <td><?php echo $item['price']; ?></td>
-                            <td><?php echo $item['price'] * $item['num']?></td>
-                            
+                            <td><img style="width:100px; height:100px;" src="../images/<?php echo $key['images'];?>"/></td>
+                            <td><?php echo $key['title']; ?></td>
+                            <td><?php echo $key['num']; ?></td>
+                            <td><?php echo number_format($key['price'], 0, ",", ".");?></td>
+                            <td><?php echo number_format($key['total_money'], 0, ",", ".");?></td>
+                        </tr>  
+                        <?php endforeach; ?> 
+                        <tr>
+                            <td></td>
+                            <td>Tổng tiền</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><?php echo number_format($item['total_money'], 0, ",", ".");?></td>
                         </tr>
-                                
                     </tbody>
-                    <?php endforeach; ?>
                 </table>
+                <?php endforeach ;?>
             </div>
             <div class="row">
                 <div class="card-body"> 

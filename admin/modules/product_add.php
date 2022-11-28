@@ -7,7 +7,7 @@
         $price = $_POST['price'];
         $discount = $_POST['discount'];
         $descript = $_POST['descript'];
-        $created_at = $updated_at = date('Y-m-d H:s:i');
+        $created_at = $updated_at = date('Y-m-d');
         // Điều kiện kiểm tra định dạng ảnh, nếu không phải ảnh không cho upload
         if ($_FILES['images']['type'] == "image/jpeg" || $_FILES['images']['type'] == "image/png" || $_FILES['images']['type'] == "image/gif") {
             $tmp_name = $_FILES['images']['tmp_name'];
