@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/swiper-bundle.min.css">
+
+        <!-- <link rel="stylesheet" href="css/product_detail.css">  -->
         <title>Product details</title>
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-        <!-- Link Swiper's CSS -->
-        <link rel="stylesheet" href="swiper-bundle.min.css">
-
-        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <!--NAVIGATION-->
-        <?php include("nav.php")?>
+        <?php include('nav.php');?>
+
         <?php 
             if(isset($_GET["id_product"]))
             {
@@ -27,13 +19,11 @@
                 $sql1 = "SELECT * FROM `galery` WHERE `product_id` = '$id_product';";
                 $galery = executeResult($sql1);
             }
+            $sql2 = "SELECT * FROM feedback";
+            $feedback = executeResult($sql2);
         ?>
 
-        <?php
-
-        ?>
-
-        <section class="container sproduct my-5 pt-5">
+        <section class="container sproduct my-5 pt-2">
             <div class="row mt-5">
                 <?php foreach($product as $key => $value): 
                 ?>
@@ -78,40 +68,38 @@
                     Thông tin sản phẩm
                 </div>
                 <div class="product-detail-under-content-big">
-                    <div class="product-detail-under-content-title row">
-                        <div class="product-detail-under-content-title-item chitiet">
+                    <div class="d-flex flex-row">
+                        <div class="p-2 chitiet">
                             <p>Chi tiết</p>
                         </div>
-                        <div class="product-detail-under-content-title-item">
+                        <div class="p-2 title-item">
                             <p>&verbar;</p>
                         </div>
-                        <div class="product-detail-under-content-title-item vanchuyen">
+                        <div class="p-2 vanchuyen">
                             <p>Thông tin vận chuyển</p>
                         </div>
-                        <div class="product-detail-under-content-title-item">
+                        <div class="p-2 title-item">
                             <p>&verbar;</p>
                         </div>
-                        <div class="product-detail-under-content-title-item thanhtoan">
-                            <p>Phương thức thanh toán</p>                         
+                        <div class="p-2 thanhtoan">
+                            <p>Phương thức thanh toán</p>                    
                         </div>
-                        <div class="product-detail-under-content-title-item">
+                        <div class="p-2 title-item">
                             <p>&verbar;</p>
                         </div>
-                        <div class="product-detail-under-content-title-item doitra">
+                        <div class="p-2 doitra">
                             <p>Chính sách đổi & trả</p>                         
                         </div>
                     </div>
                     <div class="product-detail-under-content">
                         <div class="product-detail-under-content-chitiet">
                             <div class="row m-0 py-2">
+                                <?php foreach($product as $key => $value): 
+                                ?>
                                 <div class="col-lg-6 col-md-6">
-                                    T-CLASSIC - THIẾT KẾ CỔ ĐIỂN KHÔNG BAO GIỜ LỖI MỐT <br><br>
-                                    Trong bộ sưu tập T-Classic, dễ dàng tìm thấy những thuộc tính Nổi bật và những kỹ thuật 
-                                    Tốt nhất từ Tissot, đem đến sự chính xác và chất lượng vượt trội từ với nhiều dòng sản 
-                                    phẩm khác nhau. Một số mẫu trong bộ sưu tập T-classic luôn là best-seller trên toàn cầu 
-                                    và đã giành được giải thưởng uy tín trong các cuộc thi đồng hồ. Thiết kế của đồng hồ 
-                                    T-Classic là không bao giờ lỗi mốt, một số mẫu đã luôn tồn tại trong hơn 20 năm.
+                                    <?php echo $value['descript']?>
                                 </div>
+                                <?php endforeach?>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="DetailsTable__Container-sc-6kksbc-0 kmjgzn">
                                         <div class="DetailsTable__Row-sc-6kksbc-5 jdSzSj">
@@ -183,7 +171,7 @@
 
                         <div class="product-detail-under-content-thanhtoan">
                             <div class="row m-0 py-1">
-                                <div class="col-lg-10 col-md-6">
+                                <div class="col">
                                     <p>Simple Watch cung cấp các phương thức thanh toán an toàn và bạn có thể chọn thanh toán bằng Visa, Mastercard, JCB, thanh toán qua tiền mặt, internet banking hoặc trả góp 0%.</p>
                                     <div class="logo-chuyen-phat">
                                         <div class="row m-0 py-0">
@@ -205,7 +193,7 @@
 
                         <div class="product-detail-under-content-doitra">
                             <div class="row m-0 py-1">
-                                <div class="col-lg-10 col-md-6">
+                                <div class="col">
                                     <p>
                                         • Chúng tôi cung cấp trả lại miễn phí cho tất cả các sản phẩm của chúng tôi. Bạn có 
                                         thể trả lại các sản phẩm bạn đã mua trong vòng 30 ngày kể từ ngày nhận được (các) mặt 
@@ -244,78 +232,21 @@
             <div class="slide-container swiper">
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
-                        <div class="card swiper-slide">
+                        <?php foreach($feedback as $key5 => $value5): 
+                        ?>
+                        <div class="card swiper-slide">                            
                             <div class="image-content">
                                 <span class="overlay"></span>
                                 <div class="card-image">
                                     <img src="images/user_img/pic-1.png" alt="" class="card-img">
                                 </div>
-                            </div>    
+                            </div>                                
                             <div class="card-content">
-                                <h2 class="name">Nguyen Van B</h2>
-                                <p class="description">Hiện tại, bộ phim "Thắp sáng anh, sưởi ấm em" chuyển thể từ tiểu thuyết "Chiếc bật lửa và váy công chúa" đã phá 10.000 điểm, gia nhập list bộ phim đã phá 10.000 điểm trên Youku như Hạnh Phúc Đến Vạn Gia, Băng Vũ Hoả, Khu Rừng Nhỏ Của Hai Người, Dữ Quân Sơ Tương Thức, Trọng Sinh Chi Môn, Trầm Vụn Hương Phai. </p>    
-                            </div>
+                                <h2 class="name"><?php echo $value5['fullname']?></h2>
+                                <p class="description"><?php echo $value5['message']?></p>    
+                            </div>                            
                         </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-                                <div class="card-image">
-                                    <img src="images/user_img/pic-1.png" alt="" class="card-img">
-                                </div>
-                            </div>    
-                            <div class="card-content">
-                                <h2 class="name">Nguyen Van B</h2>
-                                <p class="description">Hiện tại, bộ phim "Thắp sáng anh, sưởi ấm em" chuyển thể từ tiểu thuyết "Chiếc bật lửa và váy công chúa" đã phá 10.000 điểm, gia nhập list bộ phim đã phá 10.000 điểm trên Youku như Hạnh Phúc Đến Vạn Gia, Băng Vũ Hoả, Khu Rừng Nhỏ Của Hai Người, Dữ Quân Sơ Tương Thức, Trọng Sinh Chi Môn, Trầm Vụn Hương Phai. </p>    
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-                                <div class="card-image">
-                                    <img src="images/user_img/pic-1.png" alt="" class="card-img">
-                                </div>
-                            </div>    
-                            <div class="card-content">
-                                <h2 class="name">Nguyen Van B</h2>
-                                <p class="description">Hiện tại, bộ phim "Thắp sáng anh, sưởi ấm em" chuyển thể từ tiểu thuyết "Chiếc bật lửa và váy công chúa" đã phá 10.000 điểm, gia nhập list bộ phim đã phá 10.000 điểm trên Youku như Hạnh Phúc Đến Vạn Gia, Băng Vũ Hoả, Khu Rừng Nhỏ Của Hai Người, Dữ Quân Sơ Tương Thức, Trọng Sinh Chi Môn, Trầm Vụn Hương Phai. </p>    
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-                                <div class="card-image">
-                                    <img src="images/user_img/pic-1.png" alt="" class="card-img">
-                                </div>
-                            </div>    
-                            <div class="card-content">
-                                <h2 class="name">Nguyen Van B</h2>
-                                <p class="description">Hiện tại, bộ phim "Thắp sáng anh, sưởi ấm em" chuyển thể từ tiểu thuyết "Chiếc bật lửa và váy công chúa" đã phá 10.000 điểm, gia nhập list bộ phim đã phá 10.000 điểm trên Youku như Hạnh Phúc Đến Vạn Gia, Băng Vũ Hoả, Khu Rừng Nhỏ Của Hai Người, Dữ Quân Sơ Tương Thức, Trọng Sinh Chi Môn, Trầm Vụn Hương Phai. </p>    
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-                                <div class="card-image">
-                                    <img src="images/user_img/pic-1.png" alt="" class="card-img">
-                                </div>
-                            </div>    
-                            <div class="card-content">
-                                <h2 class="name">Nguyen Van B</h2>
-                                <p class="description">Hiện tại, bộ phim "Thắp sáng anh, sưởi ấm em" chuyển thể từ tiểu thuyết "Chiếc bật lửa và váy công chúa" đã phá 10.000 điểm, gia nhập list bộ phim đã phá 10.000 điểm trên Youku như Hạnh Phúc Đến Vạn Gia, Băng Vũ Hoả, Khu Rừng Nhỏ Của Hai Người, Dữ Quân Sơ Tương Thức, Trọng Sinh Chi Môn, Trầm Vụn Hương Phai. </p>    
-                            </div>
-                        </div>
-                        <div class="card swiper-slide">
-                            <div class="image-content">
-                                <span class="overlay"></span>
-                                <div class="card-image">
-                                    <img src="images/user_img/pic-1.png" alt="" class="card-img">
-                                </div>
-                            </div>    
-                            <div class="card-content">
-                                <h2 class="name">Nguyen Van B</h2>
-                                <p class="description">Hiện tại, bộ phim "Thắp sáng anh, sưởi ấm em" chuyển thể từ tiểu thuyết "Chiếc bật lửa và váy công chúa" đã phá 10.000 điểm, gia nhập list bộ phim đã phá 10.000 điểm trên Youku như Hạnh Phúc Đến Vạn Gia, Băng Vũ Hoả, Khu Rừng Nhỏ Của Hai Người, Dữ Quân Sơ Tương Thức, Trọng Sinh Chi Môn, Trầm Vụn Hương Phai. </p>    
-                            </div>
-                        </div>
+                        <?php endforeach?>
                     </div>
                 </div>
                 <div class="swiper-button-next swiper-navBtn"></div>
@@ -324,146 +255,33 @@
             </div>
         </section>
 
-        <section class="comment-box">
-            <h1 class="text-center" style="font-family: 'Courier New', Courier, monospace; color:coral">Bình luận</h1>
+        <section class="comment-box" style="margin-bottom: 40px;">
+            <h1 class="text-center" style="font-family: 'Courier New', Courier, monospace; color:coral;">Bình luận</h1>
             <p class="text-center">Nếu bạn có những thắc mắc gì, hay có những đánh giá gì về sản phẩm của chúng tôi thì hãy gửi nhận xét ở phần phía dưới nhé!!!</p>
             <div class="row">
-                <form action="#" class="frame">
-                    <input type="text" name="full-name" placeholder="Họ và tên...">
+                <form method="POST" class="frame">
+                    <input type="text" name="fullname" placeholder="Họ và tên...">
                     <input type="email" name="email" placeholder="Địa chỉ email...">
-                    <textarea name="comment" placeholder="Hãy viết nhận xét của bạn ở đây..."></textarea>
+                    <textarea name="message" placeholder="Hãy viết nhận xét của bạn ở đây..."></textarea>
                     <button type="submit">Gửi bình luận</button>                
                 </form>
             </div>
-            
         </section>
 
-        <section id="featured" class="my-5 pb-5">
-            <div class="container text-center mt-5 py-5">
-                <h3>Related Products</h3>
-                <hr class="mx-auto">
-            </div>
-            <div class="row mx-auto container-fluid">
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-                <div class="product text-center col-lg-3 col-md-4 col-12">
-                    <img class="img-fluid mb-33" src="images/anhphu4.jpg" alt="">
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h5 class="p-name">Omega</h5>
-                    <h4 class="p-price">25.000.000đ</h4>
-                    <button class="buy-btn">Show More</button>
-                </div>
-            </div>
-        </section>
+        <?php 
+            if(isset($_POST['submit'])){
+                $fullname = $_POST['fullname'];
+                $message = $_POST['message'];
+                $email = $_POST['email'];
+    
+                $sql = "INSERT INTO `feedback`(`fullname`, `email`, `message`) VALUES ('$fullname','$email','$message')";
+    
+                $result = execute($sql);
+                echo '<script>alert("Gửi phản hồi thành công !")</script>';     
+            }
+        ?>
 
-        <footer class="mt-5 py-5">
-            <div class="row container mx-auto pt-5">
-                <div class="footer-one col-lg-3 col-md-6 col-12">
-                    <img src="images/Simple.png" alt="">
-                    <p class="pt-3">LEARN HOW TO MAKE RESPONSIVE ECOMMERCE WEBSITE USING HTML CSS AND JAVASCRIPT. IN THIS.</p>                   
-                </div>
-                <div class="footer-one col-lg-3 col-md-6 col-12 mb-3">
-                    <h5 class="pb-2">Featured</h5>
-                    <ul class="text-uppercase list-unstyled">
-                        <li><a href="#">Men</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Women</a></li>
-                        <li><a href="#">Women</a></li>
-                    </ul>
-                </div>
-                <div class="footer-one col-lg-3 col-md-6 col-12 mb-3">
-                    <h5 class="pb-2">Contact Us</h5>
-                    <div>
-                        <h6 class="text-uppercase">Address</h6>
-                        <p>123 street name, city</p>
-                    </div>
-                    <div>
-                        <h6 class="text-uppercase">Phone</h6>
-                        <p>123 456 789</p>
-                    </div>
-                    <div>
-                        <h6 class="text-uppercase">Email</h6>
-                        <p>mail@example.com</p>
-                    </div>
-                </div>
-                <div class="footer-one col-lg-3 col-md-6 col-12">
-                    <h5 class="pb-2">Instagram</h5>
-                    <div class="row">
-                        <img class="img-fluid w-25 h-100 m-2" src="" alt="">
-                        <img class="img-fluid w-25 h-100 m-2" src="" alt="">
-                        <img class="img-fluid w-25 h-100 m-2" src="" alt="">
-                        <img class="img-fluid w-25 h-100 m-2" src="" alt="">
-                        <img class="img-fluid w-25 h-100 m-2" src="" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="copyright mt-5">
-                <div class="row container mx-auto">
-                    <div class="col-lg-3 col-md-6 col-12 mb-4">
-                        <img src="" alt="">  
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12 text-nowrap mb-2">
-                        <p>rymo eCommerce &copy; 2022. All Rights Reserved </p>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-        
+        <?php include('footer.php');?>
         <!--Chuyển đổi ảnh trong phần Product Details-->
         <script>
             var MainImg = document.getElementById('MainImg');
@@ -535,7 +353,7 @@
         </script>
 
         <!-- Swiper JS -->
-        <script src="swiper-bundle.min.js"></script>
+        <script src="css/swiper-bundle.min.js"></script>
 
         <!-- Initialize Swiper -->
         <script>
@@ -569,5 +387,7 @@
                 }
             });
         </script>
+
     </body>
+
 </html>

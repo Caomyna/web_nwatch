@@ -55,7 +55,7 @@
                         foreach ($ListProduct as $item ) {
                     ?>
                     
-                    <div class="product text-center col-lg-3 col-md-4 col-12">
+                    <div onclick="window.location.href='product_detail.php?id_product=<?php echo $value['id_product']?>'" class="product text-center col-lg-3 col-md-4 col-12">
                         <img class="img-fluid mb-33" src="images/<?php echo $item['images']?>" alt="">
                         <div class="star">
                             <i class="fas fa-star"></i>

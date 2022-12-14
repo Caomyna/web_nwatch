@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -92,7 +95,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="index.php?page=users.php" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i> 
+                        <i class="nav-icon fas fa-user"></i>
                         <p>
                             Quản lý người dùng 
                         </p>

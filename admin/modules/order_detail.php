@@ -34,8 +34,8 @@
                     //  $index = 1;
                      foreach($orderList as $item) : 
                 ?>
-                <div class="panel-body text-left">
-                    <table style="border-spacing: 15px;">
+                <div class="panel-body text-left" style="padding: 20px;">
+                    <table style="border-spacing: 15px; line-height: 30px;">
                         <tr>
                             <td><b>Tên khách hàng: </b></td>
                             <td><?php echo $item['fullname'];?></td>

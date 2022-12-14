@@ -13,7 +13,6 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th  width="20px"> ID_User</th>
                     <th>Họ Tên</th>
                     <th>Email</th>
                     <th>SĐT</th>
@@ -32,8 +31,7 @@
                          echo "<script>window.location.href='index.php?page=feedback.php'</script>";
                      }
                     // Lấy danh sách danh mục sản phẩm từ database
-                    $sql = 'SELECT feedback.id_feedback, feedback.fullname, feedback.email, feedback.phone_number, feedback.message, 
-                    users.id_user FROM feedback LEFT OUTER JOIN users ON feedback.user_id = users.id_user';
+                    $sql = 'SELECT * FROM feedback';
                     $feedback = executeResult($sql);
                     $index = 1;
                     foreach($feedback as $item) : 
@@ -41,7 +39,6 @@
             
                 <tr>
                     <td><?php echo $index++; ?></td>
-                    <td><?php echo $item['id_user']; ?></td>
                     <td><?php echo $item['fullname']; ?></td>
                     <td><?php echo $item['email']; ?></td>
                     <td><?php echo $item['phone_number']; ?></td>
