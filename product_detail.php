@@ -3,13 +3,12 @@
     <head>
         <link rel="stylesheet" href="css/swiper-bundle.min.css">
 
-        <!-- <link rel="stylesheet" href="css/product_detail.css">  -->
+        <link rel="stylesheet" href="css/product_detail.css"> 
         <title>Product details</title>
     </head>
     <body>
         <!--NAVIGATION-->
         <?php include('nav.php');?>
-
         <?php 
             if(isset($_GET["id_product"]))
             {
@@ -18,6 +17,8 @@
                 $product = executeResult($sql);
                 $sql1 = "SELECT * FROM `galery` WHERE `product_id` = '$id_product';";
                 $galery = executeResult($sql1);
+            }elseif (!isset($_GET["id_product"])) {
+                echo "<script>window.location.href='shop.php'</script>";
             }
             $sql2 = "SELECT * FROM feedback";
             $feedback = executeResult($sql2);
@@ -238,7 +239,7 @@
                             <div class="image-content">
                                 <span class="overlay"></span>
                                 <div class="card-image">
-                                    <img src="images/user_img/pic-1.png" alt="" class="card-img">
+                                    <img src="images/user_img/user.png" alt="" class="card-img">
                                 </div>
                             </div>                                
                             <div class="card-content">
@@ -259,23 +260,22 @@
             <h1 class="text-center" style="font-family: 'Courier New', Courier, monospace; color:coral;">Bình luận</h1>
             <p class="text-center">Nếu bạn có những thắc mắc gì, hay có những đánh giá gì về sản phẩm của chúng tôi thì hãy gửi nhận xét ở phần phía dưới nhé!!!</p>
             <div class="row">
-                <form method="POST" class="frame">
+                <form method="POST" class="frame" action="">
                     <input type="text" name="fullname" placeholder="Họ và tên...">
                     <input type="email" name="email" placeholder="Địa chỉ email...">
                     <textarea name="message" placeholder="Hãy viết nhận xét của bạn ở đây..."></textarea>
-                    <button type="submit">Gửi bình luận</button>                
+                    <button type="submit" name="submit">Gửi bình luận</button>                
                 </form>
             </div>
         </section>
 
         <?php 
-            if(isset($_POST['submit'])){
+            if(isset($_POST['submit']) && isset($_GET["id_product"])){
                 $fullname = $_POST['fullname'];
                 $message = $_POST['message'];
                 $email = $_POST['email'];
     
                 $sql = "INSERT INTO `feedback`(`fullname`, `email`, `message`) VALUES ('$fullname','$email','$message')";
-    
                 $result = execute($sql);
                 echo '<script>alert("Gửi phản hồi thành công !")</script>';     
             }

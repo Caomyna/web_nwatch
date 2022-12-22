@@ -10,6 +10,7 @@
                     <h1><span>Best Price</span> This Year</h1>
                     <p>Shoomatic offers your very comfortable time<br>on walking and exercises.</p>
                 </div>
+                <!-- <a href="shop.php" class="btn">Shop now</a> -->
                 <button>Shop now</button>
             </div>
         </section>

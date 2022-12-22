@@ -43,8 +43,8 @@
                                 echo '<script>alert("Chưa có sản phẩm nào trong giỏ hàng!!")</script>';
                                 $error = true;
                             }
-                            if ($error ==false && !empty($_POST['num']) && isset($_SESSION['id_user'])) {//xử lý giỏ hàng vào database
-                                $sql = "SELECT * FROM product WHERE `id_product` IN (".implode(",",array_keys($_POST['num'])).")";
+                            if ($error ==false && !empty($_POST['num']) && isset($_SESSION['fullname'])) {//xử lý giỏ hàng vào database
+                                $sql = "SELECT * FROM product WHERE `id_product` IN (".implode(",",array_keys($_POST['num'])).")"; //implode( kí tự ngăn cách các phần tử, mảng dữ liệu truyền vào);
                                 $listcart = executeResult($sql);
                                 $total = 0;
                                 foreach ($listcart as $key) {
@@ -90,7 +90,7 @@
         ?>
 
         <section id="blog-home" class="pt-5 mt-5  container">
-            <h2 class="font-weight-bold pt-4">Shopping Cart</h2>
+            <h2 class="font-weight-bold pt-4">Giỏ hàng</h2>
             <hr>
         </section>
 
@@ -99,12 +99,12 @@
                 <table width="100%">
                     <thead>
                         <tr>
-                            <td>Remove</td>
-                            <td>Image</td>
-                            <td>Product</td>
-                            <td>Price</td>
-                            <td>Quatity</td>
-                            <td>Total</td>
+                            <td>Xóa</td>
+                            <td>Hình ảnh</td>
+                            <td>Sản phẩm</td>
+                            <td>Giá</td>
+                            <td>Số lượng</td>
+                            <td>Tổng tiền</td>
                         </tr>
                     </thead>
 

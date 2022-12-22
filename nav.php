@@ -33,17 +33,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Liên hệ</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href=""><i class="fal fa-search"></i></a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="cart.php"><i class="fal fa-shopping-bag"></i></a>
-                </li>  
-                <?php
+                </li> 
+                <li class="nav-item dropdown">
+                    <?php
                     if (isset($_SESSION ['fullname']) && $_SESSION['role'] == 'user')
                     {?>
                          
-                <li class="nav-item dropdown">
                     <a class="nav-link" href="" ><i class="fal fa-user"></i><?php echo $_SESSION['fullname'];?></a>
                     <ul class="dropdown-menu" style="padding: 5px;">
                         <li style="list-style: none;">

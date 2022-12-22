@@ -8,35 +8,13 @@
         $discount = $_POST['discount'];
         $descript = $_POST['descript'];
         $created_at = $updated_at = date('Y-m-d');
-
         $images = '';
-        // if(isset($_FILES['images'])) {
-        //     $dir = "../images/";
-        //     $target_file = $dir.basename($_FILES["images"]["name"]);
-        //     $images = basename($_FILES["images"]["name"]);
-        //     $allowUpload = true;
-        //     $allowtypes = array('jpg', 'png', 'jpeg', 'gif', 'jfif');
-        //     $maxfilesize   = 10000000;
-        //     if ($_FILES["images"]['error'] != 0) {
-        //         echo "<br>The uploaded file is error or no file selected.";
-        //         die;
-        //     }
-        //     if ($allowUpload) {
-        //         //Lưu file vào thư mục được chỉ định trên server
-        //         if (move_uploaded_file($_FILES["images"]["tmp_name"], $target_file)) {
-        //             echo "<br>File ". basename( $_FILES["images"]["name"])." uploaded successfully.";
-        //             echo "The file saved at " . $target_file;
-
-        //         } else {
-        //             echo "<br>An error occurred while uploading the file.";
-        //         }
-        //     }
-        // }
 
         //Điều kiện kiểm tra định dạng ảnh, nếu không phải ảnh không cho upload
         if ($_FILES['images']['type'] == "image/jpeg" || $_FILES['images']['type'] == "image/png" || $_FILES['images']['type'] == "image/gif") {
             $tmp_name = $_FILES['images']['tmp_name'];
             $images = $_FILES['images']['name'];
+            move_uploaded_file($tmp_name, '../images/'.$images);
 
         }
         if(isset($_FILES['multiImg'])){
@@ -44,7 +22,7 @@
             $file_names = $files['name'];
 
             foreach ($file_names as $key => $value) {
-                move_uploaded_file($files['tmp_name'][$key], 'image/'.$value);
+                move_uploaded_file($files['tmp_name'][$key], '../images/'.$value);
             }
         }
         $conn = mysqli_connect('localhost:3306', 'root', '', 'shop');
@@ -56,7 +34,7 @@
             $sql = "INSERT INTO `galery`(`product_id`, `images`) VALUES ('$id_pro','$value')";
             mysqli_query($conn,$sql);
         }
-        echo '<script>alert("Thêm sản phẩm thành công!")</script>';
+        echo '<script>alert("Thêm sản phẩm thành công!")</script>'; 
         echo "<script>window.location.href='index.php?page=product_list.php'</script>";
     }
 ?>

@@ -572,7 +572,7 @@ meta {
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #4070f4;
+    border: 4px solid var(--main-color);
 }
 .slide-content{
     margin: 0 40px;
@@ -602,7 +602,7 @@ meta {
     top:0;
     height: 100%;
     width: 100%;
-    background-color: #4070f4;
+    background-color: var(--main-color);
     border-radius: 25px 25px 0 25px;
 }
 .overlay::before,
@@ -613,7 +613,7 @@ meta {
     bottom: -40px;
     height: 40px;
     width: 40px;
-    background-color: #4070f4;
+    background-color: var(--main-color);
 }
 .overlay::after{
     border-radius: 0 25px 0 0;

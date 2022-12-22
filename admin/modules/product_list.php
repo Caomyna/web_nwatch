@@ -15,7 +15,6 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th  width="20px"> ID </th>
                     <th>Hình ảnh</th>
                     <th>Tên sản phẩm</th>
                     <th>Giá bán</th>
@@ -45,7 +44,6 @@
             
                 <tr>
                     <td><?php echo $index++; ?></td>
-                    <td><?php echo $item['id_product']; ?></td>
                     <td><img style="width:100px;" src="../images/<?php echo $item['images'];?>"/></td>
                     <td><?php echo $item['title']; ?></td>
                     <td><?php echo number_format($item['price'], 0, ",", ".")?></td>

@@ -13,8 +13,8 @@
         <table class="table table-bordered table-hover" id="tbl_orders">
             <thead>
                 <tr>
-                    <th>STT</th>
-                    <th  width="20px">Mã đơn</th>
+                    <th>#</th>
+                    <th>Mã đơn</th>
                     <th>Tên KH</th>
                     <th>SĐT</th>
                     <th>Ngày đặt</th>
@@ -94,11 +94,6 @@
                             </a>
                         <?php endif; ?>
                     </td>
-                    <!-- <td>
-                        <a href="" class="btn btn-dark">Sửa</a>
-                    
-                        <a href="" class="btn btn-dark">Xóa</a>
-                    </td> -->
                 </tr>
                         
             </tbody>

@@ -128,6 +128,7 @@
                 <li class="nav-item">
                     <a href="logout.php" class="nav-link">
                         <i class="nav-icon fas fa-signout"></i> 
+                        <!-- <i class="fa fa-sign-out"></i> -->
                         <p>
                             Đăng xuất 
                         </p>

@@ -51,7 +51,7 @@
             <div class="mb-3">
                 <label class="form-label">Ảnh sản phẩm</label>
                 <input name ="images" type="file" class="form-control">
-                <img src="../image/<?php echo $product_edit['images'];?>" alt="" style="max-width: 300px;">
+                <img src="../images/<?php echo $product_edit['images'];?>" alt="" style="max-width: 300px;">
             </div>
             <div class="mb-3">
                 <label class="form-label">Ảnh mô tả</label>
@@ -60,7 +60,7 @@
                     <?php foreach ($img_pro as $item) :?>
                     <div class="col-md-3">
                         <a href="">
-                            <img src="../image/<?php echo $item['images'];?>" alt="" style="max-height:200px;">
+                            <img src="../images/<?php echo $item['images'];?>" alt="" style="max-height:200px;">
                         </a>
                     </div>
                     <?php endforeach; ?>
