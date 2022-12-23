@@ -17,6 +17,10 @@
                 $product = executeResult($sql);
                 $sql1 = "SELECT * FROM `galery` WHERE `product_id` = '$id_product';";
                 $galery = executeResult($sql1);
+
+                $query = "SELECT * FROM category INNER JOIN product ON category.id_category = product.category_id WHERE `id_product` = '$id_product'";
+                $category_product = executeResult($query);
+                
             }elseif (!isset($_GET["id_product"])) {
                 echo "<script>window.location.href='shop.php'</script>";
             }
@@ -41,8 +45,11 @@
                 </div>
 
                 <div id="information" class="col-lg-7 col-md-12 col-12">
-                    <h6>Home / Watch Men</h6>
-                    <h3 class="py-3">Đồng Hồ Daniel Wellington Nam <?php echo $value['title']?></h3>
+                    <?php foreach($category_product as $key3 => $value3): 
+                    ?>
+                    <h6>Sản phẩm / <?php echo($value3['name_category'])?></h6>                    
+                    <h3 class="py-3"><?php echo($value3['name_category'])?> <?php echo $value['title']?></h3>
+                    <?php endforeach?>
                     <h6>Mã: WDA00000104 (Mã quốc tế: <?php echo $value['title']?>)</h6>
                     <hr>
                     <div class="product-brands">
@@ -275,7 +282,7 @@
                 $message = $_POST['message'];
                 $email = $_POST['email'];
     
-                $sql = "INSERT INTO `feedback`(`fullname`, `email`, `message`) VALUES ('$fullname','$email','$message')";
+                $sql = "INSERT INTO `feedback`(`fullname`, `email`, `message`) VALUES ('$fullname','$email', '$message')";
                 $result = execute($sql);
                 echo '<script>alert("Gửi phản hồi thành công !")</script>';     
             }

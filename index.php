@@ -10,8 +10,7 @@
                     <h1><span>Best Price</span> This Year</h1>
                     <p>Shoomatic offers your very comfortable time<br>on walking and exercises.</p>
                 </div>
-                <!-- <a href="shop.php" class="btn">Shop now</a> -->
-                <button>Shop now</button>
+                <button onclick="window.location.href='shop.php'">Shop now</button>
             </div>
         </section>
 
@@ -28,21 +27,21 @@
 
         <section id="new" class="w-100">
             <div class="row p-0 m-0">
-                <div class="one col-lg-4 col-md-12 col-12 p-0">
+                <div class="one col-lg-4 col-md-12 col-12 p-0" onclick="window.location.href='shop.php'">
                     <img class="img-fluid" src="images/New1.jpg" alt="">
                     <div class="details">
                         <h2>Soft-Luxurious Women's Watch</h2>
                         <button class="text-uppercase">Shop now</button>
                     </div>                    
                 </div>
-                <div class="one col-lg-4 col-md-12 col-12 p-0">
+                <div class="one col-lg-4 col-md-12 col-12 p-0" onclick="window.location.href='shop.php'">
                     <img class="img-fluid" src="images/New2.jpg" alt="">
                     <div class="details">
                         <h2>Modern & Smart Model</h2>
                         <button class="text-uppercase">Shop now</button>
                     </div>                    
                 </div>
-                <div class="one col-lg-4 col-md-12 col-12 p-0">
+                <div class="one col-lg-4 col-md-12 col-12 p-0" onclick="window.location.href='shop.php'">
                     <img class="img-fluid" src="images/New3.jpg" alt="">
                     <div class="details">
                         <h2>Noble Men's Watch</h2>

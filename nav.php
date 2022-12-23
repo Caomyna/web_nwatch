@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.php">Trang chủ</a>
+                    <a class="nav-link" href="index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="shop.php">Sản phẩm</a>
@@ -20,7 +20,6 @@
                         <?php
                             $sql = 'SELECT * FROM category'; 
                             $categoryList = executeResult($sql);
-                            // $index = 1;
                             foreach($categoryList as $item) : 
                         ?>
                         <li><a class="dropdown-item" href="shop.php#<?php echo $item['id_category'];?>"><?php echo $item['name_category'];?></a></li>
@@ -33,9 +32,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Liên hệ</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href=""><i class="fal fa-search"></i></a>
-                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="cart.php"><i class="fal fa-shopping-bag"></i></a>
                 </li> 

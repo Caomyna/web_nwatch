@@ -434,11 +434,11 @@ meta {
     left: 0;
 }
 .swiper-pagination.bullet{
-    background-color: #6e93f7;
+    background-color: var(--extra-color);
     opacity: 1;
 }
 .swiper-pagination.bullet-active{
-    background-color: #4070f4;
+    background-color:var(--extra-color);
 }
 @media screen and (max-width: 768px) {
     .swiper-navBtn{

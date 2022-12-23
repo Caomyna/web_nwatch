@@ -132,7 +132,7 @@ hr{
         color: #fff;
     }
 
-    /*Định dạng phần home/ shop/ blog/...*/
+    /*Định dạng phần home/ shop/ ...*/
     #navbarSupportedContent > ul{
         margin: 1rem;  
         justify-content: flex-end;
@@ -626,11 +626,11 @@ meta {
     padding: 25px 0;
 }
 .swiper-navBtn{
-    color: #6e93f7;
+    color: var(--main-color);
     transition: color 0.3s ease;
 }
 .swiper-navBtn:hover{
-    color: #4070f4;
+    color: var(--main-color);
 }
 .swiper-navBtn::before,
 .swiper-navBtn::after{
@@ -640,11 +640,11 @@ meta {
     left: 0;
 }
 .swiper-pagination.bullet{
-    background-color: #6e93f7;
+    background-color: var(--main-color);
     opacity: 1;
 }
 .swiper-pagination.bullet-active{
-    background-color: #4070f4;
+    background-color: var(--main-color);
 }
 @media screen and (max-width: 768px) {
     .swiper-navBtn{
@@ -975,7 +975,7 @@ meta {
     mix-blend-mode:screen;
 }
 
-.content{
+.introduction .row .content{
     flex: 1 1 40rem;
     padding-left: 7px;
 }

@@ -43,7 +43,7 @@
                                 echo '<script>alert("Chưa có sản phẩm nào trong giỏ hàng!!")</script>';
                                 $error = true;
                             }
-                            if ($error ==false && !empty($_POST['num']) && isset($_SESSION['fullname'])) {//xử lý giỏ hàng vào database
+                            if ($error ==false && !empty($_POST['num']) && isset($_SESSION['id_user'])) {//xử lý giỏ hàng vào database
                                 $sql = "SELECT * FROM product WHERE `id_product` IN (".implode(",",array_keys($_POST['num'])).")"; //implode( kí tự ngăn cách các phần tử, mảng dữ liệu truyền vào);
                                 $listcart = executeResult($sql);
                                 $total = 0;
